@@ -23,6 +23,13 @@ export class updateName extends cdk.Stack {
       environment: {
         DDB_TABLE_NAME: "sre-otel-poc-dev",
       },
+       layers: [
+        lambda.LayerVersion.fromLayerVersionArn(
+          this,
+          'otel-layer',
+          'arn:aws:lambda:us-west-2:901920570463:layer:aws-otel-nodejs-arm64-ver-1-17-1:1'
+        ),
+      ],
       tracing: lambda.Tracing.PASS_THROUGH,
       bundling: {
         keepNames: true,
@@ -40,19 +47,8 @@ export class updateName extends cdk.Stack {
           "@opentelemetry/api",
           "@opentelemetry/sdk-node",
           "@opentelemetry/auto-instrumentations-node",
-        ],
-        commandHooks: {
-          beforeBundling(inputDir: string, outputDir: string): string[] {
-            return [];
-          },
-          afterBundling(): string[] {
-            return [];
-          },
-          beforeInstall() {
-            return [];
-          },
-        },
-      },
+        ]
+      }
     });
 
     updateNameFunction.addToRolePolicy(
@@ -68,7 +64,7 @@ export class updateName extends cdk.Stack {
       defaultCorsPreflightOptions: {
         allowOrigins: apigateway.Cors.ALL_ORIGINS,
         allowMethods: apigateway.Cors.ALL_METHODS,
-        allowHeaders: ["Content-Type", "Authorization", "traceparent"],
+        allowHeaders: ["Content-Type", "Authorization", "traceparent", "tracestate", "newrelic"],
       },
     });
   }
