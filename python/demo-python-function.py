@@ -10,10 +10,8 @@ def handler(event, context):
             "Content-Type": "application/json",
             "Access-Control-Allow-Origin": "*",
             "Access-Control-Allow-Methods": "GET,POST,OPTIONS",
-            "Access-Control-Allow-Headers": "Content-Type,Authorization,X-Api-Key,traceparent,b3,x-honeycomb-team",
-            "Access-Control-Allow-Credentials": "true",
-            "Access-Control-Expose-Headers": "Server-Timing",
-            "Server-Timing": "traceparent;desc=" + "\"" + event['headers']['traceparent'] + "\""
+            "Access-Control-Allow-Headers": "Content-Type,Authorization,X-Api-Key,traceparent,tracestate,newrelic",
+            "Access-Control-Allow-Credentials": "true"
         },
         "body": json.dumps({
             "Region": os.environ['AWS_REGION'],
