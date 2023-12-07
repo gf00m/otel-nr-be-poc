@@ -59,7 +59,7 @@ const handler = async (
         "Access-Control-Allow-Origin": "*",
         "Access-Control-Allow-Methods": "GET,POST,OPTIONS",
         "Access-Control-Allow-Headers":
-          "Content-Type,Authorization,X-Api-Key,traceparent",
+          "Content-Type,Authorization,X-Api-Key,traceparent,tracestate,newrelic",
         "Access-Control-Allow-Credentials": "true",
       },
     };
