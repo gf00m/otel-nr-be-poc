@@ -53,7 +53,18 @@ export class updateName extends cdk.Stack {
           "@opentelemetry/api",
           "@opentelemetry/sdk-node",
           "@opentelemetry/auto-instrumentations-node",
-        ]
+        ],
+        commandHooks: {
+          beforeBundling(inputDir: string, outputDir: string): string[] {
+            return [`cp ${inputDir}/collector.yaml ${outputDir}`]
+          },
+          afterBundling(): string[] {
+            return []
+          },
+          beforeInstall() {
+            return []
+          },
+        },
       }
     });
 
