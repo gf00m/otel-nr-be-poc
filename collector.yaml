@@ -1,0 +1,23 @@
+# Docs - https://docs.honeycomb.io/getting-data-in/otel-collector/
+receivers:
+  otlp:
+    protocols:
+      grpc:
+      http: 
+
+exporters:
+  otlp/traces/newrelic:
+    endpoint: otlp.nr-data.net:443
+    headers:
+      api-key: <api_key>
+
+  logging:
+    loglevel: debug
+
+service:
+  extensions: []
+  pipelines:
+    traces:
+      receivers: [otlp]
+      processors: []
+      exporters: [otlp/traces/newrelic]
