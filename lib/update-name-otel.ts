@@ -22,6 +22,12 @@ export class updateName extends cdk.Stack {
       timeout: Duration.seconds(20),
       environment: {
         DDB_TABLE_NAME: "sre-otel-poc-dev",
+        OTEL_SERVICE_NAME: "staging-backend",
+        OTEL_LAMBDA_DISABLE_AWS_CONTEXT_PROPAGATION: "true",
+        AWS_LAMBDA_EXEC_WRAPPER: "/opt/otel-handler",
+        OPENTELEMETRY_COLLECTOR_CONFIG_FILE: "/var/task/collector.yaml",
+        NEW_RELIC_LICENSE_KEY: "<api_key>",
+        NEW_RELIC_OPENTELEMETRY_ENDPOINT": "otlp.nr-data.net:443"
       },
        layers: [
         lambda.LayerVersion.fromLayerVersionArn(
