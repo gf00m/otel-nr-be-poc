@@ -1,23 +1,27 @@
-# Docs - https://docs.honeycomb.io/getting-data-in/otel-collector/
+---
 receivers:
   otlp:
     protocols:
-      grpc:
-      http: 
-
+      grpc: null
+      http: null
 exporters:
   otlp/traces/newrelic:
     endpoint: otlp.nr-data.net:443
     headers:
-      api-key: <api_key>
-
+      api-key: 546tregse546ty54tg54ty64ty
+  otlp/traces/csaa-otel:
+    endpoint: a04958c6b053f42328bec146fc09355a-1675581105.us-west-2.elb.amazonaws.com:4317
+    tls:
+      insecure: true
+      insecure_skip_verify: true
   logging:
     loglevel: debug
-
 service:
   extensions: []
   pipelines:
     traces:
-      receivers: [otlp]
+      receivers:
+        - otlp
       processors: []
-      exporters: [otlp/traces/newrelic]
+      exporters:
+        - otlp/traces/csaa-otel

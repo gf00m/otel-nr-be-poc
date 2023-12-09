@@ -2,7 +2,7 @@
   "name": "serverless-cdk-otel",
   "version": "0.1.0",
   "bin": {
-    "serverless-cdk-otel": "bin/serverless-cdk-otel.js"
+    "serverless-cdk-otel": "bin/otel_poc_V1.js"
   },
   "scripts": {
     "build": "tsc",

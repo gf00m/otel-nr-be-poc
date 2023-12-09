@@ -1,5 +1,5 @@
 {
-  "app": "npx ts-node --prefer-ts-exts bin/otel-poc-latest-0915.ts",
+  "app": "npx ts-node --prefer-ts-exts bin/otel_poc_V1.ts",
   "watch": {
     "include": [
       "**"
