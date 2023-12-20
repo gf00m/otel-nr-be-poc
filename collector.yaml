@@ -9,7 +9,7 @@ exporters:
   otlp/traces/newrelic:
     endpoint: otlp.nr-data.net:443
     headers:
-      api-key: <api_key>
+      api-key: 521e73ff57f3f750e78e265f181c750aFFFFNRAL
 
   logging:
     loglevel: debug
