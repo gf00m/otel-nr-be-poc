@@ -35,6 +35,11 @@ export class ServerlessCdkOtelStack_OTEL extends cdk.Stack {
           'otel-layer',
           'arn:aws:lambda:us-west-2:901920570463:layer:aws-otel-nodejs-arm64-ver-1-17-1:1'
         ),
+        lambda.LayerVersion.fromLayerVersionArn(
+          this,
+          'appconfig-layer',
+          'arn:aws:lambda:us-west-2:359756378197:layer:AWS-AppConfig-Extension-Arm64:63'
+        )
       ],
       tracing: lambda.Tracing.ACTIVE,
       bundling: {
