@@ -10,7 +10,7 @@ exporters:
     headers:
       api-key: 546tregse546ty54tg54ty64ty
   otlp/traces/csaa-otel:
-    endpoint: a04958c6b053f42328bec146fc09355a-1675581105.us-west-2.elb.amazonaws.com:4317
+    endpoint: a75a1f34bca754c0a8eb2846d4973861-850238428.us-west-2.elb.amazonaws.com:4317
     tls:
       insecure: true
       insecure_skip_verify: true
