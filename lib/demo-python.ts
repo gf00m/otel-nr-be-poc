@@ -26,7 +26,7 @@ export class DemoPython extends Construct {
           AWS_LAMBDA_EXEC_WRAPPER: "/opt/otel-instrument",
           OPENTELEMETRY_COLLECTOR_CONFIG_FILE: "/var/task/collector.yaml",
           NEW_RELIC_LICENSE_KEY: "<api_key>",
-          NEW_RELIC_OPENTELEMETRY_ENDPOINT": "otlp.nr-data.net:443"
+          NEW_RELIC_OPENTELEMETRY_ENDPOINT: "otlp.nr-data.net:443"
         },
         layers: [
         lambda.LayerVersion.fromLayerVersionArn(

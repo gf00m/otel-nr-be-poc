@@ -25,9 +25,9 @@ export class updateName extends cdk.Stack {
         OTEL_SERVICE_NAME: "staging-backend",
         OTEL_LAMBDA_DISABLE_AWS_CONTEXT_PROPAGATION: "true",
         AWS_LAMBDA_EXEC_WRAPPER: "/opt/otel-handler",
-        OPENTELEMETRY_COLLECTOR_CONFIG_FILE: "/var/task/collector.yaml",
-        NEW_RELIC_LICENSE_KEY: "<api_key>",
-        NEW_RELIC_OPENTELEMETRY_ENDPOINT": "otlp.nr-data.net:443"
+        OTEL_EXPORTER_OTLP_ENDPOINT: "https://otlp.nr-data.net:443",
+        OTEL_EXPORTER_OTLP_HEADERS: "api-key=521e73ff57f3f750e78e265f181c750aFFFFNRAL",
+        OTEL_RESOURCE_ATTRIBUTES: "deployment.environment=otel-poc-backend-app,service.version=1.0.0"
       },
        layers: [
         lambda.LayerVersion.fromLayerVersionArn(
@@ -54,17 +54,6 @@ export class updateName extends cdk.Stack {
           "@opentelemetry/sdk-node",
           "@opentelemetry/auto-instrumentations-node",
         ],
-        commandHooks: {
-          beforeBundling(inputDir: string, outputDir: string): string[] {
-            return [`cp ${inputDir}/collector.yaml ${outputDir}`]
-          },
-          afterBundling(): string[] {
-            return []
-          },
-          beforeInstall() {
-            return []
-          },
-        },
       }
     });
 

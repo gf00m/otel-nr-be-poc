@@ -8,6 +8,6 @@ export class ServerlessCdkOtelStack extends cdk.Stack {
     super(scope, id, props);
 
     new updateName(this, "update-name-otel");
-    new DemoPython(this, "demo-python-lambda");
+   // new DemoPython(this, "demo-python-lambda");
   }
 }
